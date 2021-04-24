@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/node": "^7.12.10",
+    "@babel/register": "^7.12.10",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.2.2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cluster": "^0.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.13",
+    "mongoose-lean-getters": "^0.1.2",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
+    "os": "^0.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11"
+  }
+}
