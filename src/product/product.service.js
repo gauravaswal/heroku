@@ -1,5 +1,6 @@
 import Product from '../../models/product'
 var jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 export default {
 
@@ -115,7 +116,25 @@ export default {
     },
     async getProductById(req,res) {
         try {
-         let product =   await Product.findOne({_id:req.params.productId}).populate('_category').lean()
+         let product =   await Product.aggregate([
+            {
+                "$match": {
+                    _id: mongoose.Types.ObjectId(req.params.productId)
+                }
+            },
+            {
+                $lookup:
+                  {
+                    from: "reviews",
+                    localField: "_id",
+                    foreignField: "_product",
+                    as: "review",
+                  
+                  }
+             },
+             {$sort: {"review.createdAt": -1}},
+         ])
+        console.log("---los",product)
            if(product){
            return res.status(200).json({
                message:"Product get successfully",
@@ -129,6 +148,7 @@ export default {
             }); 
            }
         }catch(err) {
+            console.log("--er",err)
             return res.status(400).json({
                 error: "Something went wrong"
             });

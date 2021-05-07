@@ -46,7 +46,7 @@ export default {
                 if(login) return res.status(200).json({ msg: "Login success",data:user,token:jwttoken,success:true })
                 } else {
                     console.log("--elseee")
-                    return res.status(404).json({ error: "Invalid credencial",data:'',success:true })
+                    return res.status(409).json({ error: "Invalid password",data:'',success:false })
                 }
 
             })
@@ -88,5 +88,19 @@ export default {
         }catch(err) {
 
         }
+    },
+    async forgetPassword (req,res) {
+   try{
+    await User.findOne({email:req.body.email}).then(user =>{
+        if(user)
+        {
+            
+        }
+    }).catch(err => {
+
+    })
+   }catch(err){
+
+   }
     }
 }
